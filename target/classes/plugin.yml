@@ -1,0 +1,10 @@
+name: ESWelcome
+version: 1.0-SNAPSHOT
+main: me.xemor.eswelcome.ESWelcome
+api-version: 1.13
+authors: [Xemor]
+description: Welcomes new players
+commands:
+  eswelcome:
+    description: The root command of ESWelcome
+    usage: /eswelcome reload (only command implemented)
