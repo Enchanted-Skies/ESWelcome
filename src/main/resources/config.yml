@@ -1,6 +1,7 @@
-#Colour Code Compatible. Just do & and then the colour code.
-#{PLAYER} will be replaced with the name of the player
-#{COUNT} will be replaced with what number player they are.
+#Minedown compatible!
+#%PLAYER% will be replaced with the name of the player.
+#%COUNT% will be replaced with what number player they are.
+commandPrefix: "&rainbow&[ES]"
 welcomeMessage: ""
 personalMessages:
   - ""

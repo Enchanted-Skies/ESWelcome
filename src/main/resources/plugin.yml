@@ -1,8 +1,8 @@
 name: ESWelcome
 version: ${project.version}
 main: me.xemor.eswelcome.ESWelcome
-api-version: 1.13
-authors: [Xemor]
+api-version: 1.16
+authors: [Xemor, zeddit]
 description: Welcomes new players
 commands:
   eswelcome:
