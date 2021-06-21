@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ESWelcomeCommands implements CommandExecutor, TabExecutor {
@@ -31,7 +32,7 @@ public class ESWelcomeCommands implements CommandExecutor, TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        return Arrays.asList(new String[]{"reload"});
+        return Collections.singletonList("reload");
     }
 
 }
