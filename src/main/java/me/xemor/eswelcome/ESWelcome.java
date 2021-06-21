@@ -1,5 +1,6 @@
 package me.xemor.eswelcome;
 
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,10 +10,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ESWelcome extends JavaPlugin {
 
-    ESJoin esJoin;
+    private ESJoin esJoin;
+    private static BukkitAudiences bukkitAudiences;
+
 
     @Override
     public void onEnable() {
+        bukkitAudiences = BukkitAudiences.create(this);
         FileConfiguration config = getConfig();
         config.options().copyDefaults(true);
         saveDefaultConfig();
@@ -34,5 +38,9 @@ public final class ESWelcome extends JavaPlugin {
         for (Listener listener : listeners) {
             Bukkit.getServer().getPluginManager().registerEvents(listener, plugin);
         }
+    }
+
+    public static BukkitAudiences getBukkitAudiences() {
+        return bukkitAudiences;
     }
 }
