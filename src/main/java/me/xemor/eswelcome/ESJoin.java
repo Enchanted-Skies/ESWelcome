@@ -20,6 +20,8 @@ public class ESJoin implements Listener {
     String welcomeMessage;
     List<String> firstTimePersonalMessages;
     List<String> personalMessages;
+    List<String> firstTimeCommands;
+    List<String> commands;
 
     public ESJoin(ESWelcome pl) {
         plugin = pl;
@@ -31,6 +33,8 @@ public class ESJoin implements Listener {
         firstTimeWelcomeMessage = plugin.getConfig().getString("firstTimeWelcomeMessage");
         personalMessages = plugin.getConfig().getStringList("personalMessages");
         firstTimePersonalMessages = plugin.getConfig().getStringList("firstTimePersonalMessages");
+        firstTimeCommands = plugin.getConfig().getStringList("firstTimeCommands");
+        commands = plugin.getConfig().getStringList("commands");
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -42,11 +46,17 @@ public class ESJoin implements Listener {
             for (String personalMessage : firstTimePersonalMessages) {
                 ESWelcome.getBukkitAudiences().player(player).sendMessage(parse(player, personalMessage));
             }
+            for (String firstTimeCommand : firstTimeCommands) {
+                Bukkit.dispatchCommand(player, firstTimeCommand);
+            }
         }
         else {
             ESWelcome.getBukkitAudiences().players().sendMessage(parse(player, welcomeMessage));
             for (String personalMessage : personalMessages) {
                 ESWelcome.getBukkitAudiences().player(player).sendMessage(parse(player, personalMessage));
+            }
+            for (String command : commands) {
+                Bukkit.dispatchCommand(player, command);
             }
         }
     }

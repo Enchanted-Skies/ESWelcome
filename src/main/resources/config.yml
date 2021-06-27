@@ -3,3 +3,5 @@ welcomeMessage: ""
 personalMessages: []
 firstTimeWelcomeMessage: "&8&l[&a%count%&8&l] &f%player_name% has joined for the first time ever."
 firstTimePersonalMessages: []
+firstTimeCommands: []
+commands: []
