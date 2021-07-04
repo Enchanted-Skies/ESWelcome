@@ -47,7 +47,8 @@ public class ESJoin implements Listener {
                 ESWelcome.getBukkitAudiences().player(player).sendMessage(parse(player, personalMessage));
             }
             for (String firstTimeCommand : firstTimeCommands) {
-                Bukkit.dispatchCommand(player, firstTimeCommand);
+                String replacedCommand = firstTimeCommand.replaceAll("%player_name%", player.getName());
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), replacedCommand);
             }
         }
         else {
@@ -56,7 +57,8 @@ public class ESJoin implements Listener {
                 ESWelcome.getBukkitAudiences().player(player).sendMessage(parse(player, personalMessage));
             }
             for (String command : commands) {
-                Bukkit.dispatchCommand(player, command);
+                String replacedCommand = command.replaceAll("%player_name%", player.getName());
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), replacedCommand);
             }
         }
     }
