@@ -3,7 +3,9 @@ package me.xemor.eswelcome;
 import de.themoep.minedown.adventure.MineDown;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -58,7 +60,7 @@ public class ESJoin implements Listener {
             }
             for (String command : commands) {
                 String replacedCommand = command.replaceAll("%player_name%", player.getName());
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), replacedCommand);
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), replacedCommand); //Consider moving into next tick
             }
         }
     }
@@ -71,6 +73,6 @@ public class ESJoin implements Listener {
     public Component parse(Player player, String message) {
         String placeholderFirstTime = PlaceholderAPI.setPlaceholders(player, message);
         int numberOfPlayers = Bukkit.getServer().getOfflinePlayers().length;
-        return new MineDown(placeholderFirstTime).replaceFirst(true).replace("count", Integer.toString(numberOfPlayers)).toComponent();
+        return LegacyComponentSerializer.legacyAmpersand().deserialize(placeholderFirstTime.replaceAll("%count%", Integer.toString(numberOfPlayers)));
     }
 }
